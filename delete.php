@@ -1,4 +1,5 @@
 <?php
+//Delete function. This file delete the entire chat and generates a new clean DB file (txt)
 $archivo = "data.txt";
 unlink($archivo);
 $a1 = fopen($archivo, "a");
