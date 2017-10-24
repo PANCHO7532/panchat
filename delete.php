@@ -1,6 +1,8 @@
 <?php
-//Delete function. This file delete the entire chat and generates a new clean DB file (txt)
-$archivo = "data.txt";
+include 'config_auth.php';
+$srvloc = $_SERVER['REMOTE_ADDR'];
+include ($filedbcls);
+$archivo = $filedb;
 unlink($archivo);
 $a1 = fopen($archivo, "a");
 fwrite($a1, "<?php");
