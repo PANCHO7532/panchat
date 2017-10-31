@@ -28,9 +28,11 @@ if($data == '') {
 }
 $srvloc = $_SERVER['REMOTE_ADDR'];
 include $filedbbanmsj;
+$htmspe = htmlspecialchars($data);
 $archivo = $filedb;
+$remoteaddr = $_SERVER["REMOTE_ADDR"];
 $archivo = fopen($archivo, 'a');
-fwrite($archivo, "echo '<br>".$author."(".$_SERVER['REMOTE_ADDR'].")".": ".$data."</br>';\r\n");
+fwrite($archivo, 'echo "<br>'.$author.'('.$remoteaddr.')'.': '.$htmspe.'</br>";');
 fwrite($archivo, "\r\n");
 fclose($archivo);
 header("Location: index.php");
