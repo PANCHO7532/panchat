@@ -1,5 +1,21 @@
 <?php
 include 'config_auth.php';
+if(file_exists($filedbcls)) {
+	$dummy_var = "1234";
+} else {
+	$fop = fopen($filedbcls, "a");
+	fwrite($fop, "<?php");
+	fwrite($fop, "\r\n");
+	fclose($fop);
+}
+if(file_exists($filedbclslist)) {
+	$dummy_var = "1234";
+} else {
+	$fop = fopen($filedbclslist, "a");
+	fwrite($fop, "<?php");
+	fwrite($fop, "\r\n");
+	fclose($fop);
+}
 if(isset($_COOKIE['username'])) {
 	if(isset($_COOKIE['passwd'])) {
 		if($_COOKIE['username'] == $u1a && $_COOKIE['passwd'] == base64_encode(md5($u1b))) {
@@ -19,7 +35,7 @@ if(isset($_COOKIE['username'])) {
 if(isset($_POST['clearban'])) {
 	$data3 = $_POST['clearban'];
 	$filen1 = $filedbcls;
-	$data4 = "if($"."srvloc == '".$data3."') { header('Location: index.php'); die;}";
+	$data4 = "if($"."srvloc == '".$data3."') { header('Location: warnban?type=2'); die;}";
 	$action2 = fopen($filen1, "a");
 	fwrite($action2, $data4);
 	fwrite($action2, "\r\n");
@@ -36,7 +52,12 @@ if(isset($_POST['clearban'])) {
 <p>Ban "Clear chat" to IP: </p><input type="text" name="clearban" value="0.0.0.0"/></p>
 <p>Banned IPS: </p>
 <p><ul><?php include ($filedbclslist); ?></ul></p>
-<p><a href="clsbanmsjc.php">Clean IP list of banned function "Clear Chat"</a> | <a href="modcp.php">Go to ban messages of an IP</a></p>
+<p><ul>More actions:
+<li><a href="clsbanmsjc.php">Clean IP list of banned function "Clear Chat"</a></li>
+<li><a href="modcp.php">Go to ban messages of an IP</a></li>
+<li><a href="modcp2.php">Ban nicknames</a></li>
+<li><a href="modcp3.php">Allow an IP the clearchat function</a></li>
+</ul></p>
 <input type="submit" value="Submit"/>
 </form>
 </body>

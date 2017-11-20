@@ -22,17 +22,23 @@ if($author == 'NULL') {
 	header("Location: index.php");
 	die;
 }
+include $filedbbanick;
+
 if($data == '') {
 	header("Location: index.php");
 	die;
 }
 $srvloc = $_SERVER['REMOTE_ADDR'];
 include $filedbbanmsj;
-$htmspe = htmlspecialchars($data);
+if($htmspe == enable) {
+	$datap = htmlspecialchars($data);
+} else {
+	$datap = str_replace('"', "'", $data);
+}
 $archivo = $filedb;
 $remoteaddr = $_SERVER["REMOTE_ADDR"];
 $archivo = fopen($archivo, 'a');
-fwrite($archivo, 'echo "<br>'.$author.'('.$remoteaddr.')'.': '.$htmspe.'</br>";');
+fwrite($archivo, 'echo "<br>'.$author.'('.$remoteaddr.')'.': '.$datap.'</br>";');
 fwrite($archivo, "\r\n");
 fclose($archivo);
 header("Location: index.php");

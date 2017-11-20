@@ -6,5 +6,5 @@ setcookie('passwd', $u1b, time()-650000);
 <fieldset>
 <legend>Logout</legend>
 <p>Sucessfully logged out.</p>
-<p><a href="login.php">Volver</a></p>
+<p><a href="login.php">Go Back</a></p>
 </fieldset>

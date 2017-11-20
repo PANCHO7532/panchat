@@ -1,17 +1,26 @@
 <?php
 include 'config_auth.php';
-if(file_exists($filedbbanmsj)) {
+if(isset($lockclschat)) {
+	if($lockclschat == disable) {
+			echo "<fieldset><legend>Disabled</legend><p>This feature is disabled on config_auth.php</p><p><a href='modcp.php'>Go Back</a></p>";
+			die;
+	}
+} else {
+	echo "<fieldset><legend>Disabled</legend><p>This feature is disabled on config_auth.php</p><p><a href='modcp.php'>Go Back</a></p>";
+	die;
+}
+if(file_exists($filedballowedipcl)) {
 	$dummy_var = "1234";
 } else {
-	$fop = fopen($filedbbanmsj, "a");
+	$fop = fopen($filedballowedipcl, "a");
 	fwrite($fop, "<?php");
 	fwrite($fop, "\r\n");
 	fclose($fop);
 }
-if(file_exists($filedbbanmsjlist)) {
+if(file_exists($filedballowedipclist)) {
 	$dummy_var = "1234";
 } else {
-	$fop = fopen($filedbbanmsjlist, "a");
+	$fop = fopen($filedballowedipclist, "a");
 	fwrite($fop, "<?php");
 	fwrite($fop, "\r\n");
 	fclose($fop);
@@ -19,19 +28,19 @@ if(file_exists($filedbbanmsjlist)) {
 if(isset($_COOKIE['username'])) {
 	if(isset($_COOKIE['passwd'])) {
 		if($_COOKIE['username'] == $u1a && $_COOKIE['passwd'] == base64_encode(md5($u1b))) {
-			$archivo = $filedbbanmsj;
+			$archivo = $filedballowedipcl;
 			unlink($archivo);
 			$a1 = fopen($archivo, "a");
 			fwrite($a1, "<?php");
 			fwrite($a1, "\r\n");
 			fclose($a1);
-			$archivocache = $filedbbanmsjlist;
+			$archivocache = $filedballowedipclist;
 			unlink ($archivocache);
 			$a1cache = fopen($archivocache, "a");
 			fwrite($a1cache, "<?php");
 			fwrite($a1cache, "\r\n");
 			fclose($a1cache);
-			header("Location: modcp.php");
+			header("Location: modcp3.php");
 			} else {
 				header("Location: error.html");
 				die;
