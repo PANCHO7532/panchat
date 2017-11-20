@@ -18,6 +18,7 @@ $u1b = 'admin';
 $htmspe = 'enable';
 
 //Lock the chat clearing ONLY for allowed ips (if it is enabled, an aditional CPanel will be unlocked for use)
+//NOTE: localhost address(::1) always will be allowed to use the delete chat function.
 $lockclschat = 'disable';
 
 //Timeout of Auto-Load5 (in secs) - Default: 5

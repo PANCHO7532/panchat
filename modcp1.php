@@ -35,7 +35,7 @@ if(isset($_COOKIE['username'])) {
 if(isset($_POST['clearban'])) {
 	$data3 = $_POST['clearban'];
 	$filen1 = $filedbcls;
-	$data4 = "if($"."srvloc == '".$data3."') { header('Location: warnban?type=2'); die;}";
+	$data4 = "if($"."srvloc == '".$data3."') { header('Location: warnban.php?type=2'); die;}";
 	$action2 = fopen($filen1, "a");
 	fwrite($action2, $data4);
 	fwrite($action2, "\r\n");

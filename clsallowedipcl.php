@@ -1,7 +1,7 @@
 <?php
 include 'config_auth.php';
 if(isset($lockclschat)) {
-	if($lockclschat == disable) {
+	if($lockclschat == "disable") {
 			echo "<fieldset><legend>Disabled</legend><p>This feature is disabled on config_auth.php</p><p><a href='modcp.php'>Go Back</a></p>";
 			die;
 	}
@@ -14,6 +14,8 @@ if(file_exists($filedballowedipcl)) {
 } else {
 	$fop = fopen($filedballowedipcl, "a");
 	fwrite($fop, "<?php");
+	fwrite($fop, "\r\n");
+	fwrite($fop, "if($"."srvloc == '::1') { dbclsp(); header('Location: index.php'); } else { header('Location: warnban.php?type=4'); }");
 	fwrite($fop, "\r\n");
 	fclose($fop);
 }

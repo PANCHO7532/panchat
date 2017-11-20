@@ -19,8 +19,7 @@ if(file_exists($filedb)) {
 <fieldset>
 <legend>Chat</legend>
 <?php
-$file = "data.txt";
-include $file;
+include $filedb;
 ?>
 <p><b>Nick: </b><input type="text" name="author" value="<?php if(isset($_COOKIE['author'])) { echo $_COOKIE['author'];} else { echo "NULL";} ?>"/></p>
 <p><b>Message: </b><input type="text" name="data" value=""/><input type="submit" value="Send"/></p>
