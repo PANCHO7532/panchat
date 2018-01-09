@@ -34,6 +34,6 @@ Fieldset is love, fieldset is life <3
 
 - This dont needs setup, only download it in your favourite server envoirement (we recommend XAMPP) and let it go!!! Tested on PHP 7.0.22 / Doesn't works fine over PHP5 or less.
 
-Coded and developed by PANCHO7532 - STMRP7 Communications LTD S.A
+Coded and developed by PANCHO7532 - P7COMunications LTD S.A
 
 Free open source script, not for massive commercial use. Copyright PANCHO7532 - 2017
